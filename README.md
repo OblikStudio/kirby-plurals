@@ -4,7 +4,7 @@ Allows you to use language variables to translate a string according to that lan
 
 ## Installation
 
-With Composer:
+With [Composer](https://packagist.org/packages/oblik/kirby-plurals):
 
 ```
 composer require oblik/kirby-plurals
