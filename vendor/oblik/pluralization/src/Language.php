@@ -4,21 +4,28 @@ namespace Oblik\Pluralization;
 
 abstract class Language
 {
-    abstract protected static function cardinal(int $i, $v): int;
-    abstract protected static function ordinal(int $n): int;
-
+    /**
+     * n	absolute value of the source number (integer and decimals).
+     * i	integer digits of n.
+     * v	number of visible fraction digits in n, with trailing zeros.
+     * w	number of visible fraction digits in n, without trailing zeros.
+     * f	visible fractional digits in n, with trailing zeros.
+     * t	visible fractional digits in n, without trailing zeros.
+     * @see http://unicode.org/reports/tr35/tr35-numbers.html#Operands
+     */
     private static function parseNumber($number) {
         if (!is_string($number)) {
             $number = (string) $number;
         }
 
         $split = explode('.', $number);
-        $integer = (int) $split[0];
-        $fraction = isset($split[1]) ? (float) ('0.' . $split[1]) : null;
+        $integer = array_shift($split);
+        $fraction = implode('', $split);
 
         return [
-            'integer' => $integer,
-            'fraction' => $fraction
+            (float) $number,
+            (int) $integer,
+            strlen($fraction)
         ];
     }
 
@@ -28,14 +35,9 @@ abstract class Language
 
     public static function getCardinal($number)
     {
-        // In some languages (like Russian), there's a difference between `0`
-        // and `0.0`. Since those values are the same in PHP, they should be
-        // represented as strings so that decimal points aren't lost.
-        $number = self::parseNumber($number);
-
-        return static::cardinal(
-            $number['integer'],
-            $number['fraction']
+        return call_user_func_array(
+            static::class . '::cardinal',
+            self::parseNumber($number)
         );
     }
 

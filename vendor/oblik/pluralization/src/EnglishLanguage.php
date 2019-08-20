@@ -4,16 +4,9 @@ namespace Oblik\Pluralization;
 
 class EnglishLanguage extends Language
 {
-    static function cardinal(int $i, $v): int
-    {
-        if ($i === 1 && $v === null) {
-            return ONE;
-        } else {
-            return OTHER;
-        }
-    }
+    use Rules\Cardinal1;
 
-    static function ordinal(int $n): int
+    static function ordinal($n)
     {
         $mod10 = $n % 10;
         $mod100 = $n % 100;

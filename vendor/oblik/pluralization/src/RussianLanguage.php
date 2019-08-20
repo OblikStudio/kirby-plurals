@@ -4,12 +4,12 @@ namespace Oblik\Pluralization;
 
 class RussianLanguage extends Language
 {
-    static function cardinal(int $i, $v): int
+    static function cardinal($n, $i, $v)
     {
         $mod10 = $i % 10;
         $mod100 = $i % 100;
 
-        if ($v === null) {
+        if ($v === 0) {
             if ($mod10 == 1 && $mod100 != 11) {
                 return ONE;
             } elseif (
@@ -29,7 +29,7 @@ class RussianLanguage extends Language
         return OTHER;
     }
 
-    static function ordinal(int $n): int
+    static function ordinal()
     {
         return OTHER;
     }

@@ -4,20 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00812465e175b32e823b604fe9efb1e0",
+    "content-hash": "bba9eec8c5c34d2c27085aabb567db66",
     "packages": [
         {
-            "name": "oblik/pluralization",
-            "version": "1.1.0",
+            "name": "getkirby/composer-installer",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/OblikStudio/php-pluralization.git",
-                "reference": "912702eb53a50c7558b6ac5daa7f842129417545"
+                "url": "https://github.com/getkirby/composer-installer.git",
+                "reference": "2d6b8f5601a31caeeea45623e1643fbb437eb94e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OblikStudio/php-pluralization/zipball/912702eb53a50c7558b6ac5daa7f842129417545",
-                "reference": "912702eb53a50c7558b6ac5daa7f842129417545",
+                "url": "https://api.github.com/repos/getkirby/composer-installer/zipball/2d6b8f5601a31caeeea45623e1643fbb437eb94e",
+                "reference": "2d6b8f5601a31caeeea45623e1643fbb437eb94e",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.8",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Kirby\\ComposerInstaller\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kirby\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Kirby's custom Composer installer for the Kirby CMS and for Kirby plugins",
+            "homepage": "https://getkirby.com",
+            "time": "2019-02-11T20:27:36+00:00"
+        },
+        {
+            "name": "oblik/pluralization",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/OblikStudio/php-pluralization.git",
+                "reference": "c6e1f75dc50af0ac474b62c27cdde0c07b50769f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OblikStudio/php-pluralization/zipball/c6e1f75dc50af0ac474b62c27cdde0c07b50769f",
+                "reference": "c6e1f75dc50af0ac474b62c27cdde0c07b50769f",
                 "shasum": ""
             },
             "require-dev": {
@@ -43,7 +81,7 @@
                 }
             ],
             "description": "Pluralization according to Unicode",
-            "time": "2019-08-14T10:51:54+00:00"
+            "time": "2019-08-20T14:59:14+00:00"
         }
     ],
     "packages-dev": [],

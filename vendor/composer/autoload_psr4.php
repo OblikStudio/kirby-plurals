@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Oblik\\Pluralization\\' => array($vendorDir . '/oblik/pluralization/src'),
+    'Kirby\\' => array($vendorDir . '/getkirby/composer-installer/src'),
 );

@@ -15,12 +15,20 @@ class ComposerStaticInitde43ef9d45c41731e03ebca7bdf5319e
         array (
             'Oblik\\Pluralization\\' => 20,
         ),
+        'K' => 
+        array (
+            'Kirby\\' => 6,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Oblik\\Pluralization\\' => 
         array (
             0 => __DIR__ . '/..' . '/oblik/pluralization/src',
+        ),
+        'Kirby\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/getkirby/composer-installer/src',
         ),
     );
 
