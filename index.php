@@ -14,8 +14,7 @@ function translatePlural($key, array $data, $locale = null)
         $locale = I18n::locale();
     }
 
-    $languageCode = Locale::getPrimaryLanguage($locale);
-    $pluralizer = LANGUAGES[$languageCode] ?? LANGUAGES[$locale] ?? null;
+    $pluralizer = LANGUAGES[$locale] ?? LANGUAGES[Locale::getPrimaryLanguage($locale)] ?? null;
     
     if ($pluralizer) {
         if (isset($data['count'])) {
