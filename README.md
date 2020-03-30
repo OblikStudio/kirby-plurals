@@ -52,3 +52,20 @@ tp('place', [ 'position' => 1 ]);               // 1st
 tp('place', [ 'position' => 103 ]);             // 103rd
 tp('cookies', [ 'start' => 3, 'end' => 4 ]);    // 3-4 cookies
 ```
+
+### Locale Mapping
+
+If you're using different locale names, you can map them with the `oblik.plurals.map` config option. For example, if you have two languages `en-us` and `en-gb`, you need to map them both to the `en` pluralizator class since both of them have the same pluralization rules:
+
+`site/config/config.php`
+
+```php
+return [
+    'oblik.plurals.map' => [
+        'en-us' => 'en',
+        'en-gb' => 'en'
+    ]
+];
+```
+
+Check the available pluralization classes [here](https://github.com/OblikStudio/php-pluralization/blob/master/index.php).

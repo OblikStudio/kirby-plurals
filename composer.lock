@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bba9eec8c5c34d2c27085aabb567db66",
+    "content-hash": "cc300c81981c263503fd033c78b55150",
     "packages": [
         {
             "name": "getkirby/composer-installer",
@@ -46,16 +46,16 @@
         },
         {
             "name": "oblik/pluralization",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OblikStudio/php-pluralization.git",
-                "reference": "c6e1f75dc50af0ac474b62c27cdde0c07b50769f"
+                "reference": "0c00d172095b7e0ff75bca630940170a47d0c2d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OblikStudio/php-pluralization/zipball/c6e1f75dc50af0ac474b62c27cdde0c07b50769f",
-                "reference": "c6e1f75dc50af0ac474b62c27cdde0c07b50769f",
+                "url": "https://api.github.com/repos/OblikStudio/php-pluralization/zipball/0c00d172095b7e0ff75bca630940170a47d0c2d9",
+                "reference": "0c00d172095b7e0ff75bca630940170a47d0c2d9",
                 "shasum": ""
             },
             "require-dev": {
@@ -81,7 +81,7 @@
                 }
             ],
             "description": "Pluralization according to Unicode",
-            "time": "2019-08-20T14:59:14+00:00"
+            "time": "2020-03-30T05:24:57+00:00"
         }
     ],
     "packages-dev": [],

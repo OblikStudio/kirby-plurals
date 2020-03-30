@@ -1,21 +1,20 @@
 <?php
 
-namespace Oblik\Plurals;
-
 use Kirby\Toolkit\Str;
 use Kirby\Toolkit\I18n;
 use const Oblik\Pluralization\LANGUAGES;
 
-@include_once __DIR__ . '/vendor/autoload.php';
-
-function translatePlural($key, array $data, $locale = null)
+function tp($key, array $data, $locale = null)
 {
-    if (!$locale) {
-        $locale = I18n::locale();
+    $lc = $locale ?? I18n::locale();
+    $map = option('oblik.plurals.map');
+
+    if (is_array($map) && !empty($map[$lc])) {
+        $lc = $map[$lc];
     }
 
-    $pluralizer = LANGUAGES[$locale] ?? LANGUAGES[Locale::getPrimaryLanguage($locale)] ?? null;
-    
+    $pluralizer = LANGUAGES[$lc] ?? null;
+
     if ($pluralizer) {
         if (isset($data['count'])) {
             $form = $pluralizer::getCardinal($data['count']);
@@ -27,14 +26,14 @@ function translatePlural($key, array $data, $locale = null)
 
         if (isset($form)) {
             $form = $pluralizer::formName($form);
-            $translations = I18n::translate($key, null, $locale);
+            $translations = I18n::translation($locale)[$key] ?? null;
 
             if (is_array($translations)) {
                 $translation = $translations[$form] ?? null;
             }
-            
+
             if (empty($translation)) {
-                $translation = I18n::translate($key . ".$form", null, $locale);
+                $translation = I18n::translation($locale)[$key . ".$form"] ?? null;
             }
 
             if (is_string($translation)) {
@@ -45,11 +44,9 @@ function translatePlural($key, array $data, $locale = null)
 
     $fallback = I18n::fallback();
 
-    if ($locale !== $fallback) {
-        return translatePlural($key, $data, $fallback);
+    if ($fallback !== $locale) {
+        return tp($key, $data, $fallback);
     } else {
         return null;
     }
 }
-
-require_once 'global.php';
