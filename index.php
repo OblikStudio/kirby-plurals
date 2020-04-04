@@ -14,31 +14,36 @@ function tp($key, array $data, $locale = null)
     }
 
     $pluralizer = LANGUAGES[$lc] ?? null;
+    $translations = I18n::translation($locale)[$key] ?? null;
 
-    if ($pluralizer) {
-        if (isset($data['count'])) {
-            $form = $pluralizer::getCardinal($data['count']);
-        } else if (isset($data['position'])) {
-            $form = $pluralizer::getOrdinal($data['position']);
-        } else if (isset($data['start']) && isset($data['end'])) {
-            $form = $pluralizer::getRange($data['start'], $data['end']);
+    if ($pluralizer && is_array($translations)) {
+        $result = null;
+
+        if (
+            isset($data['count']) &&
+            $data['count'] === 0 &&
+            isset($translations['none'])
+        ) {
+            $result = $translations['none'];
+        } else {
+            $form = null;
+
+            if (isset($data['count'])) {
+                $form = $pluralizer::getCardinal($data['count']);
+            } else if (isset($data['position'])) {
+                $form = $pluralizer::getOrdinal($data['position']);
+            } else if (isset($data['start']) && isset($data['end'])) {
+                $form = $pluralizer::getRange($data['start'], $data['end']);
+            }
+
+            if ($form !== null) {
+                $formName = $pluralizer::formName($form);
+                $result = $translations[$formName] ?? end($translations);
+            }
         }
 
-        if (isset($form)) {
-            $form = $pluralizer::formName($form);
-            $translations = I18n::translation($locale)[$key] ?? null;
-
-            if (is_array($translations)) {
-                $translation = $translations[$form] ?? null;
-            }
-
-            if (empty($translation)) {
-                $translation = I18n::translation($locale)[$key . ".$form"] ?? null;
-            }
-
-            if (is_string($translation)) {
-                return Str::template($translation, $data);
-            }
+        if (is_string($result)) {
+            return Str::template($result, $data);
         }
     }
 
