@@ -50,3 +50,18 @@ function tp($key, array $data, $locale = null)
         return null;
     }
 }
+
+function tpc($key, $count, $locale = null)
+{
+    return tp($key, ['count' => $count], $locale);
+}
+
+function tpo($key, $position, $locale = null)
+{
+    return tp($key, ['position' => $position], $locale);
+}
+
+function tpr($key, $start, $end, $locale = null)
+{
+    return tp($key, ['start' => $start, 'end' => $end], $locale);
+}
